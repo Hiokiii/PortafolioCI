@@ -15,10 +15,9 @@ Portafolio, realizacion de aplicacion WEB de un club de futbol.
 
 ## Requisitos
 
-Composer Update 
+- Composer Update (Tener composer instalado)
 - Revisar Archivo .env app.baseURL = 'http://localhost:TUPUERTOENXAMPP/PortafolioCI/'
 - XAMPP Control Panel v3.0.0 o LASTEST y sacarle al comentario ';' a extension=intl ( XAMPP -> APACHE -> Config -> PHP.ini)
-- ADMINLTE3 https://github.com/ColorlibHQ/AdminLTE/releases/tag/v3.2.0 - Dercargar y Colocar en Carpeta 'Publics' los archivos 'dist' y 'plugins'.
 - Subir Archivo SQL (club_de_futbol.sql) a MySQL 
 
 ## Instalación
