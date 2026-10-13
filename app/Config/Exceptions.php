@@ -2,9 +2,11 @@
 
 namespace Config;
 
+use Throwable;
+use CodeIgniter\Debug\ExceptionHandlerInterface;
+use CodeIgniter\Debug\ExceptionHandler;
 use CodeIgniter\Config\BaseConfig;
 use Psr\Log\LogLevel;
-
 /**
  * Setup how the exception handler works.
  */
@@ -20,7 +22,6 @@ class Exceptions extends BaseConfig
      * Default: true
      */
     public bool $log = true;
-
     /**
      * --------------------------------------------------------------------------
      * DO NOT LOG STATUS CODES
@@ -29,7 +30,6 @@ class Exceptions extends BaseConfig
      * By default, only 404 (Page Not Found) exceptions are ignored.
      */
     public array $ignoreCodes = [404];
-
     /**
      * --------------------------------------------------------------------------
      * Error Views Path
@@ -40,7 +40,6 @@ class Exceptions extends BaseConfig
      * Default: APPPATH.'Views/errors'
      */
     public string $errorViewPath = APPPATH . 'Views/errors';
-
     /**
      * --------------------------------------------------------------------------
      * HIDE FROM DEBUG TRACE
@@ -50,7 +49,6 @@ class Exceptions extends BaseConfig
      * ex. ['server', 'setup/password', 'secret_token']
      */
     public array $sensitiveDataInTrace = [];
-
     /**
      * --------------------------------------------------------------------------
      * LOG DEPRECATIONS INSTEAD OF THROWING?
@@ -61,7 +59,6 @@ class Exceptions extends BaseConfig
      * This option also works for user deprecations.
      */
     public bool $logDeprecations = true;
-
     /**
      * --------------------------------------------------------------------------
      * LOG LEVEL THRESHOLD FOR DEPRECATIONS
@@ -74,4 +71,27 @@ class Exceptions extends BaseConfig
      * to capture logging the deprecations.
      */
     public string $deprecationLogLevel = LogLevel::WARNING;
+    /*
+     * DEFINE THE HANDLERS USED
+     * --------------------------------------------------------------------------
+     * Given the HTTP status code, returns exception handler that
+     * should be used to deal with this error. By default, it will run CodeIgniter's
+     * default handler and display the error information in the expected format
+     * for CLI, HTTP, or AJAX requests, as determined by is_cli() and the expected
+     * response format.
+     *
+     * Custom handlers can be returned if you want to handle one or more specific
+     * error codes yourself like:
+     *
+     *      if (in_array($statusCode, [400, 404, 500])) {
+     *          return new \App\Libraries\MyExceptionHandler();
+     *      }
+     *      if ($exception instanceOf PageNotFoundException) {
+     *          return new \App\Libraries\MyExceptionHandler();
+     *      }
+     */
+    public function handler(int $statusCode, Throwable $exception): ExceptionHandlerInterface
+    {
+        return new ExceptionHandler($this);
+    }
 }

@@ -41,6 +41,11 @@ $RECYCLE.BIN/
 #-------------------------
 # These should never be under version control,
 # as it poses a security risk.
+.env
+/.env.*
+!/.env.example
+/dist/
+/.tools/
 
 .vagrant
 Vagrantfile
@@ -83,8 +88,12 @@ phpunit
 #-------------------------
 # Composer
 #-------------------------
+/vendor/
+# Legacy Dompdf checkout; the active package is installed by Composer.
+/dompdf/
 
-
+# JavaScript dependencies are recreated from package-lock.json.
+/node_modules/
 #-------------------------
 # IDE / Development Files
 #-------------------------

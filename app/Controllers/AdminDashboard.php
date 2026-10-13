@@ -49,7 +49,7 @@ class AdminDashboard extends BaseController
         ];
 
         $usuarioModel = new UsuarioModel();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
         $usuarios = $usuarioModel->findAll();
         $usuarios = array('usuarios' => $usuarios);
 
@@ -155,7 +155,7 @@ class AdminDashboard extends BaseController
 
         $usuarioModel = new UsuarioModel();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
         $data = array(
             'nombres' => $request->getPostGet('nombres'),
             'apellidos' => $request->getPostGet('apellidos'),
@@ -292,7 +292,7 @@ class AdminDashboard extends BaseController
     {
         $usuarioModel = new UsuarioModel();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
         $id = $request->getPostGet('id');
         $usuarioModel->delete($id);
 
@@ -398,7 +398,7 @@ class AdminDashboard extends BaseController
     {
         $usuarioModel = new UsuarioModel();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
 
         // Obtén la contraseña en claro
         $clavebuena = $request->getPost('password_hash');

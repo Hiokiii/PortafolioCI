@@ -15,12 +15,25 @@ Portafolio, realizacion de aplicacion WEB de un club de futbol.
 
 ## Requisitos
 
+Actualización para InfinityFree: PHP 8.4+, CodeIgniter 4.7.5 y Dompdf 3.1.6.
+Instalar las versiones del lock con `composer install`, en lugar de actualizar
+dependencias sin revisar. Ver `deploy/INFINITYFREE.md` para el estado de la
+migración y los pasos de despliegue. Las instrucciones de XAMPP siguientes
+corresponden a la instalación original.
+
 - Composer Update (Tener composer instalado)
 - Revisar Archivo .env app.baseURL = 'http://localhost:TUPUERTOENXAMPP/PortafolioCI/'
 - XAMPP Control Panel v3.0.0 o LASTEST y sacarle al comentario ';' a extension=intl ( XAMPP -> APACHE -> Config -> PHP.ini)
 - Subir Archivo SQL (club_de_futbol.sql) a MySQL 
 
 ## Instalación
+
+Las dependencias no se guardan en Git. Después de clonar, ejecutar
+`composer install` y, si se necesitan los recursos de npm, `npm ci`.
+Copiar `.env.example` a `.env` y completar la configuración local.
+Para InfinityFree, usar `deploy/infinityfree.env.example` en la copia de subida.
+Composer instala Dompdf dentro de `vendor`; no se necesita el antiguo directorio
+`dompdf` de la raíz. Mantener `composer.lock` y `package-lock.json` versionados.
 
 Clonar Repositorio (dejar en la carpeta htdocs)   directorio:..\xampp\htdocs\PROYECTO AQUI
 Revisar Las dependencias

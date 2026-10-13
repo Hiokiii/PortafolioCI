@@ -115,7 +115,7 @@
               <li>
                   <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="/PortafolioCI/logout">Cerrar Sesión</a></li>
+              <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Cerrar Sesión</a></li>
           </ul>
       </div>
 
@@ -278,7 +278,7 @@
 <script src="<?= base_url() ?>/public/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="<?= base_url() ?>/public/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 <script src="<?= base_url() ?>/public/plugins/jszip/jszip.min.js"></script>
-<script src="<?= base_url() ?>/public/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js"></script>
 <script src="<?= base_url() ?>/public/plugins/pdfmake/vfs_fonts.js"></script>
 <script src="<?= base_url() ?>/public/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?= base_url() ?>/public/plugins/datatables-buttons/js/buttons.print.min.js"></script>

@@ -14,7 +14,7 @@ use Dompdf\Dompdf;
 use CodeIgniter\API\ResponseTrait;
 
 
-require 'vendor/autoload.php';
+// Composer is loaded by CodeIgniter's bootstrap.
 
 
 
@@ -185,7 +185,7 @@ class SocioController extends BaseController
     public function verPartidos()
     {
         $partidosModel = new PartidosModel();
-        $partidos = $partidosModel->findAll();
+        $partidos = $partidosModel->obtenerHistorial();
 
         // Pasar los datos a la vista
         $data['partidos'] = $partidos;
@@ -321,9 +321,9 @@ class SocioController extends BaseController
         return view('templates/reportes', $titulo);
     }
 
-    protected $usuario;
-    protected $pagoSocio;
-    protected $ingresoModel;
+    protected UsuarioModel $usuario;
+    protected PagoSocioModel $pagoSocio;
+    protected IngresosModel $ingresoModel;
 
 
 
@@ -335,7 +335,7 @@ class SocioController extends BaseController
 
         $data = []; // Declarar la variable $data
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             try {
 
                 // Sesión de usuario para obtener el email
@@ -646,7 +646,7 @@ class SocioController extends BaseController
     {
         $usuarioModel = new UsuarioModel();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
 
         // Obtén la contraseña en claro
         $clavebuena = $request->getPost('password_hash');

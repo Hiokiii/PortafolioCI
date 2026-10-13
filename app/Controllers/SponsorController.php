@@ -14,7 +14,7 @@ class SponsorController extends BaseController
         $validation = \Config\Services::validation();
         $validation->setRules($sponsor->validationRules);
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $titulo = [
                 'title' => 'Sponsor',
             ];

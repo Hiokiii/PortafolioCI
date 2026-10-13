@@ -6,7 +6,6 @@ use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Format\FormatterInterface;
 use CodeIgniter\Format\JSONFormatter;
 use CodeIgniter\Format\XMLFormatter;
-
 class Format extends BaseConfig
 {
     /**
@@ -26,10 +25,10 @@ class Format extends BaseConfig
      */
     public array $supportedResponseFormats = [
         'application/json',
-        'application/xml', // machine-readable XML
-        'text/xml', // human-readable XML
+        'application/xml',
+        // machine-readable XML
+        'text/xml',
     ];
-
     /**
      * --------------------------------------------------------------------------
      * Formatters
@@ -41,12 +40,7 @@ class Format extends BaseConfig
      *
      * @var array<string, string>
      */
-    public array $formatters = [
-        'application/json' => JSONFormatter::class,
-        'application/xml'  => XMLFormatter::class,
-        'text/xml'         => XMLFormatter::class,
-    ];
-
+    public array $formatters = ['application/json' => JSONFormatter::class, 'application/xml' => XMLFormatter::class, 'text/xml' => XMLFormatter::class];
     /**
      * --------------------------------------------------------------------------
      * Formatters Options
@@ -57,12 +51,7 @@ class Format extends BaseConfig
      *
      * @var array<string, int>
      */
-    public array $formatterOptions = [
-        'application/json' => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES,
-        'application/xml'  => 0,
-        'text/xml'         => 0,
-    ];
-
+    public array $formatterOptions = ['application/json' => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES, 'application/xml' => 0, 'text/xml' => 0];
     /**
      * A Factory method to return the appropriate formatter for the given mime type.
      *
@@ -74,4 +63,12 @@ class Format extends BaseConfig
     {
         return Services::format()->getFormatter($mime);
     }
+    /**
+     * --------------------------------------------------------------------------
+     * Maximum depth for JSON encoding.
+     * --------------------------------------------------------------------------
+     *
+     * This value determines how deep the JSON encoder will traverse nested structures.
+     */
+    public int $jsonEncodeDepth = 512;
 }

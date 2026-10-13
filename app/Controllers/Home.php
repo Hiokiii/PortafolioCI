@@ -430,7 +430,7 @@ class Home extends BaseController
         return view('home/registrarse');
     }
 
-    protected $usuario;
+    protected UsuarioModel $usuario;
     //INICIAR SESION
     public function validarIngreso()
 
@@ -448,7 +448,7 @@ class Home extends BaseController
         }
 
         if ($resultadoUsuario) {
-            $encrypter = \config\Services::encrypter();
+            $encrypter = \Config\Services::encrypter();
             $claveBD = $encrypter->decrypt(hex2bin($resultadoUsuario->password_hash));
             $clave = $this->request->getPost("password");
             $nombres = explode(' ', $resultadoUsuario->nombres);
@@ -483,28 +483,28 @@ class Home extends BaseController
                     switch ($query) {
                         case  'administrador':
                             //redirecciona a vista de administrador
-                            return redirect()->to(base_url() . 'AdminDashboard');
+                            return redirect()->to(base_url('AdminDashboard'));
 
                         case 'direccion':
                             //redirecciona a vista de direccion 
-                            return redirect()->to(base_url() . 'DireccionHome');
+                            return redirect()->to(base_url('DireccionHome'));
 
                         case 'jugador':
                             //redirecciona a vista de jugador
-                            return redirect()->to(base_url() . 'InicioJugador');
+                            return redirect()->to(base_url('InicioJugador'));
 
                         case 'entrenador':
                             //redirecciona a vista de entrenador
-                            return redirect()->to(base_url() . 'InicioEquipoTecnico');
+                            return redirect()->to(base_url('InicioEquipoTecnico'));
 
                         case 'equipo_tecnico':
                             //redirecciona a vista de equipo_tecnico
-                            return redirect()->to(base_url() . 'InicioEquipoTecnico');
+                            return redirect()->to(base_url('InicioEquipoTecnico'));
 
                         case 'socio':
                             //redirecciona a vista de socio
 
-                            return redirect()->to(base_url() . 'InicioSocios');
+                            return redirect()->to(base_url('InicioSocios'));
                     }
                 }
 
@@ -537,7 +537,7 @@ class Home extends BaseController
         }
 
         if ($resultadoUsuario) {
-            $encrypter = \config\Services::encrypter();
+            $encrypter = \Config\Services::encrypter();
             $claveBD = $encrypter->decrypt(hex2bin($resultadoUsuario->password_hash));
             $clave = $this->request->getPost("password");
             $nombres = explode(' ', $resultadoUsuario->nombres);
@@ -591,7 +591,7 @@ class Home extends BaseController
     public function cerrarSesion()
     {
         session()->destroy();
-        return redirect()->to(base_url() . 'Home');
+        return redirect()->to(base_url('Home'));
     }
 
     public function cerrarSesionMovil()
@@ -609,7 +609,7 @@ class Home extends BaseController
     {
         $data = [];
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
 
 
             // Validar los datos del formulario
@@ -624,7 +624,7 @@ class Home extends BaseController
             ];
             try {
                 if ($this->validate($rules)) {
-                    $encrypter = \config\Services::encrypter();
+                    $encrypter = \Config\Services::encrypter();
                     // Obtener los datos del formulario
                     $firstName = $this->request->getPost('nombres');
                     $lastName = $this->request->getPost('apellidos');

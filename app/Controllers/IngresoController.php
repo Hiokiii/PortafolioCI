@@ -24,7 +24,7 @@ class IngresoController extends BaseController
             'sponsorAmounts' => $sponsorAmounts,
         ];
 
-        if ($this->request->getMethod() === 'post') 
+        if ($this->request->getMethod() === 'POST')
         {
                 $postData = $this->request->getPost();
                 $postData['monto'] = $postData['concepto'] === 'sponsor' ? $sponsorAmounts[$postData['sponsor_id']] : $postData['monto'];

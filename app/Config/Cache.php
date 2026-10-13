@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use CodeIgniter\Cache\Handlers\ApcuHandler;
+use CodeIgniter\Cache\CacheInterface;
 use CodeIgniter\Cache\Handlers\DummyHandler;
 use CodeIgniter\Cache\Handlers\FileHandler;
 use CodeIgniter\Cache\Handlers\MemcachedHandler;
@@ -9,7 +11,6 @@ use CodeIgniter\Cache\Handlers\PredisHandler;
 use CodeIgniter\Cache\Handlers\RedisHandler;
 use CodeIgniter\Cache\Handlers\WincacheHandler;
 use CodeIgniter\Config\BaseConfig;
-
 class Cache extends BaseConfig
 {
     /**
@@ -21,7 +22,6 @@ class Cache extends BaseConfig
      * it is not available, the $backupHandler will be used in its place.
      */
     public string $handler = 'file';
-
     /**
      * --------------------------------------------------------------------------
      * Backup Handler
@@ -32,7 +32,6 @@ class Cache extends BaseConfig
      * always available, though that's not always practical for the app.
      */
     public string $backupHandler = 'dummy';
-
     /**
      * --------------------------------------------------------------------------
      * Cache Directory Path
@@ -44,7 +43,6 @@ class Cache extends BaseConfig
      * @deprecated Use the driver-specific variant under $file
      */
     public string $storePath = WRITEPATH . 'cache/';
-
     /**
      * --------------------------------------------------------------------------
      * Cache Include Query String
@@ -63,7 +61,6 @@ class Cache extends BaseConfig
      * @var bool|string[]
      */
     public $cacheQueryString = false;
-
     /**
      * --------------------------------------------------------------------------
      * Key Prefix
@@ -73,7 +70,6 @@ class Cache extends BaseConfig
      * if you run multiple applications with the same cache engine.
      */
     public string $prefix = '';
-
     /**
      * --------------------------------------------------------------------------
      * Default TTL
@@ -86,7 +82,6 @@ class Cache extends BaseConfig
      * the hard-coded value in a future release.
      */
     public int $ttl = 60;
-
     /**
      * --------------------------------------------------------------------------
      * Reserved Characters
@@ -98,7 +93,6 @@ class Cache extends BaseConfig
      * Note: The default set is required for PSR-6 compliance.
      */
     public string $reservedCharacters = '{}()/\@:';
-
     /**
      * --------------------------------------------------------------------------
      * File settings
@@ -108,11 +102,7 @@ class Cache extends BaseConfig
      *
      * @var array<string, int|string|null>
      */
-    public array $file = [
-        'storePath' => WRITEPATH . 'cache/',
-        'mode'      => 0640,
-    ];
-
+    public array $file = ['storePath' => WRITEPATH . 'cache/', 'mode' => 0640];
     /**
      * -------------------------------------------------------------------------
      * Memcached settings
@@ -124,13 +114,7 @@ class Cache extends BaseConfig
      *
      * @var array<string, bool|int|string>
      */
-    public array $memcached = [
-        'host'   => '127.0.0.1',
-        'port'   => 11211,
-        'weight' => 1,
-        'raw'    => false,
-    ];
-
+    public array $memcached = ['host' => '127.0.0.1', 'port' => 11211, 'weight' => 1, 'raw' => false];
     /**
      * -------------------------------------------------------------------------
      * Redis settings
@@ -140,14 +124,7 @@ class Cache extends BaseConfig
      *
      * @var array<string, int|string|null>
      */
-    public array $redis = [
-        'host'     => '127.0.0.1',
-        'password' => null,
-        'port'     => 6379,
-        'timeout'  => 0,
-        'database' => 0,
-    ];
-
+    public array $redis = ['host' => '127.0.0.1', 'password' => null, 'port' => 6379, 'timeout' => 0, 'database' => 0];
     /**
      * --------------------------------------------------------------------------
      * Available Cache Handlers
@@ -158,12 +135,28 @@ class Cache extends BaseConfig
      *
      * @var array<string, string>
      */
-    public array $validHandlers = [
-        'dummy'     => DummyHandler::class,
-        'file'      => FileHandler::class,
-        'memcached' => MemcachedHandler::class,
-        'predis'    => PredisHandler::class,
-        'redis'     => RedisHandler::class,
-        'wincache'  => WincacheHandler::class,
-    ];
+    public array $validHandlers = ['dummy' => DummyHandler::class, 'file' => FileHandler::class, 'memcached' => MemcachedHandler::class, 'predis' => PredisHandler::class, 'redis' => RedisHandler::class, 'wincache' => WincacheHandler::class];
+    /**
+     * --------------------------------------------------------------------------
+     * Web Page Caching: Cache Status Codes
+     * --------------------------------------------------------------------------
+     *
+     * HTTP status codes that are allowed to be cached. Only responses with
+     * these status codes will be cached by the PageCache filter.
+     *
+     * Default: [] - Cache all status codes (backward compatible)
+     *
+     * Recommended: [200] - Only cache successful responses
+     *
+     * You can also use status codes like:
+     *   [200, 404, 410] - Cache successful responses and specific error codes
+     *   [200, 201, 202, 203, 204] - All 2xx successful responses
+     *
+     * WARNING: Using [] may cache temporary error pages (404, 500, etc).
+     * Consider restricting to [200] for production applications to avoid
+     * caching errors that should be temporary.
+     *
+     * @var list<int>
+     */
+    public array $cacheStatusCodes = [];
 }

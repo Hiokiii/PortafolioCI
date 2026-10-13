@@ -21,7 +21,7 @@ class RegistrarJugadorController extends BaseController
 
         $jugador = new JugadorModel();
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
             $jugadorData = [
                 'posicion' => $postData['posicion'],
@@ -56,11 +56,11 @@ class RegistrarJugadorController extends BaseController
     {
         $db = \Config\Database::connect();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
         $usuario = new UsuarioModel();
 
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
             $jugador_id = session()->get('jugador_id');
 

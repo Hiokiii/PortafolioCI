@@ -100,7 +100,7 @@
 <body>
   <!-- Contenido de la página -->
   <div>
-  <video autoplay muted loop id="video-background">
+  <video autoplay muted loop poster="<?= base_url('public/images/estadio2.jpg') ?>" id="video-background">
     <source src="<?php echo base_url('public/Background5.mp4'); ?>" type="video/mp4">
   </video>
   </div>

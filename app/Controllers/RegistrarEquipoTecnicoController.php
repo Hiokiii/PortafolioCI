@@ -21,7 +21,7 @@ class RegistrarEquipoTecnicoController extends BaseController
 
         $miembro = new EquipoTecnicoModel();
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
             $miembroData = [
                 'cargo' => $postData['cargo'],
@@ -53,9 +53,9 @@ class RegistrarEquipoTecnicoController extends BaseController
     {
         $db = \Config\Database::connect();
         $usuario = new UsuarioModel();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
             $equipo_tecnico_id = session()->get('equipo_tecnico_id');
 

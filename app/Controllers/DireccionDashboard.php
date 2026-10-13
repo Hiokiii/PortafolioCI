@@ -108,7 +108,7 @@ class DireccionDashboard extends BaseController
         ];
 
         $data = [];
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             // Validar los datos del formulario
             $rules = [
                 'monto' => 'required',
@@ -428,7 +428,7 @@ class DireccionDashboard extends BaseController
     public function direccionverPartidos()
     {
         $partidosModel = new PartidosModel();
-        $partidos = $partidosModel->findAll();
+        $partidos = $partidosModel->obtenerHistorial();
 
         // Pasar los datos a la vista
         $data['partidos'] = $partidos;
@@ -506,7 +506,7 @@ class DireccionDashboard extends BaseController
     {
         $usuarioModel = new UsuarioModel();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
 
         // Obtén la contraseña en claro
         $clavebuena = $request->getPost('password_hash');

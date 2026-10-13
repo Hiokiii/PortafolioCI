@@ -4,7 +4,6 @@ namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Session\Handlers\FileHandler;
-
 class App extends BaseConfig
 {
     /**
@@ -18,7 +17,6 @@ class App extends BaseConfig
      *    http://example.com/
      */
     public string $baseURL = 'http://localhost/PortafolioCI/';
-
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
      * If you want to accept multiple Hostnames, set this.
@@ -32,7 +30,6 @@ class App extends BaseConfig
      * @phpstan-var list<string>
      */
     public array $allowedHostnames = [];
-
     /**
      * --------------------------------------------------------------------------
      * Index File
@@ -43,7 +40,6 @@ class App extends BaseConfig
      * variable so that it is blank.
      */
     public string $indexPage = 'index.php';
-
     /**
      * --------------------------------------------------------------------------
      * URI PROTOCOL
@@ -60,7 +56,6 @@ class App extends BaseConfig
      * WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
      */
     public string $uriProtocol = 'REQUEST_URI';
-
     /**
      * --------------------------------------------------------------------------
      * Default Locale
@@ -72,7 +67,6 @@ class App extends BaseConfig
      * should run under for this request.
      */
     public string $defaultLocale = 'en';
-
     /**
      * --------------------------------------------------------------------------
      * Negotiate Locale
@@ -84,7 +78,6 @@ class App extends BaseConfig
      * If false, no automatic detection will be performed.
      */
     public bool $negotiateLocale = false;
-
     /**
      * --------------------------------------------------------------------------
      * Supported Locales
@@ -97,7 +90,6 @@ class App extends BaseConfig
      * @var string[]
      */
     public array $supportedLocales = ['en'];
-
     /**
      * --------------------------------------------------------------------------
      * Application Timezone
@@ -107,7 +99,6 @@ class App extends BaseConfig
      * dates with the date helper, and can be retrieved through app_timezone()
      */
     public string $appTimezone = 'UTC';
-
     /**
      * --------------------------------------------------------------------------
      * Default Character Set
@@ -119,7 +110,6 @@ class App extends BaseConfig
      * @see http://php.net/htmlspecialchars for a list of supported charsets.
      */
     public string $charset = 'UTF-8';
-
     /**
      * --------------------------------------------------------------------------
      * URI PROTOCOL
@@ -131,7 +121,6 @@ class App extends BaseConfig
      * and the HTTP Strict Transport Security header will be set.
      */
     public bool $forceGlobalSecureRequests = false;
-
     /**
      * --------------------------------------------------------------------------
      * Session Driver
@@ -146,7 +135,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$driver instead.
      */
     public string $sessionDriver = FileHandler::class;
-
     /**
      * --------------------------------------------------------------------------
      * Session Cookie Name
@@ -157,7 +145,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$cookieName  instead.
      */
     public string $sessionCookieName = 'ci_session';
-
     /**
      * --------------------------------------------------------------------------
      * Session Expiration
@@ -169,7 +156,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$expiration instead.
      */
     public int $sessionExpiration = 7200;
-
     /**
      * --------------------------------------------------------------------------
      * Session Save Path
@@ -188,7 +174,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$savePath instead.
      */
     public string $sessionSavePath = WRITEPATH . 'session';
-
     /**
      * --------------------------------------------------------------------------
      * Session Match IP
@@ -202,7 +187,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$matchIP instead.
      */
     public bool $sessionMatchIP = false;
-
     /**
      * --------------------------------------------------------------------------
      * Session Time to Update
@@ -213,7 +197,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$timeToUpdate instead.
      */
     public int $sessionTimeToUpdate = 300;
-
     /**
      * --------------------------------------------------------------------------
      * Session Regenerate Destroy
@@ -226,7 +209,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$regenerateDestroy instead.
      */
     public bool $sessionRegenerateDestroy = false;
-
     /**
      * --------------------------------------------------------------------------
      * Session Database Group
@@ -237,7 +219,6 @@ class App extends BaseConfig
      * @deprecated use Config\Session::$DBGroup instead.
      */
     public ?string $sessionDBGroup = null;
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Prefix
@@ -248,7 +229,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$prefix property instead.
      */
     public string $cookiePrefix = '';
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Domain
@@ -259,7 +239,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$domain property instead.
      */
     public string $cookieDomain = '';
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Path
@@ -270,7 +249,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$path property instead.
      */
     public string $cookiePath = '/';
-
     /**
      * --------------------------------------------------------------------------
      * Cookie Secure
@@ -281,7 +259,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$secure property instead.
      */
     public bool $cookieSecure = false;
-
     /**
      * --------------------------------------------------------------------------
      * Cookie HttpOnly
@@ -292,7 +269,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$httponly property instead.
      */
     public bool $cookieHTTPOnly = true;
-
     /**
      * --------------------------------------------------------------------------
      * Cookie SameSite
@@ -316,7 +292,6 @@ class App extends BaseConfig
      * @deprecated use Config\Cookie::$samesite property instead.
      */
     public ?string $cookieSameSite = 'Lax';
-
     /**
      * --------------------------------------------------------------------------
      * Reverse Proxy IPs
@@ -339,7 +314,6 @@ class App extends BaseConfig
      * @var array<string, string>
      */
     public array $proxyIPs = [];
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Token Name
@@ -350,7 +324,6 @@ class App extends BaseConfig
      * @deprecated Use `Config\Security` $tokenName property instead of using this property.
      */
     public string $CSRFTokenName = 'csrf_test_name';
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Header Name
@@ -361,7 +334,6 @@ class App extends BaseConfig
      * @deprecated Use `Config\Security` $headerName property instead of using this property.
      */
     public string $CSRFHeaderName = 'X-CSRF-TOKEN';
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Cookie Name
@@ -372,7 +344,6 @@ class App extends BaseConfig
      * @deprecated Use `Config\Security` $cookieName property instead of using this property.
      */
     public string $CSRFCookieName = 'csrf_cookie_name';
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Expire
@@ -383,7 +354,6 @@ class App extends BaseConfig
      * @deprecated Use `Config\Security` $expire property instead of using this property.
      */
     public int $CSRFExpire = 7200;
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Regenerate
@@ -394,7 +364,6 @@ class App extends BaseConfig
      * @deprecated Use `Config\Security` $regenerate property instead of using this property.
      */
     public bool $CSRFRegenerate = true;
-
     /**
      * --------------------------------------------------------------------------
      * CSRF Redirect
@@ -405,7 +374,6 @@ class App extends BaseConfig
      * @deprecated Use `Config\Security` $redirect property instead of using this property.
      */
     public bool $CSRFRedirect = false;
-
     /**
      * --------------------------------------------------------------------------
      * CSRF SameSite
@@ -424,7 +392,6 @@ class App extends BaseConfig
      * @deprecated `Config\Cookie` $samesite property is used.
      */
     public string $CSRFSameSite = 'Lax';
-
     /**
      * --------------------------------------------------------------------------
      * Content Security Policy
@@ -442,4 +409,27 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
+    /*
+    |--------------------------------------------------------------------------
+    | Allowed URL Characters
+    |--------------------------------------------------------------------------
+    |
+    | This lets you specify which characters are permitted within your URLs.
+    | When someone tries to submit a URL with disallowed characters they will
+    | get a warning message.
+    |
+    | As a security measure you are STRONGLY encouraged to restrict URLs to
+    | as few characters as possible.
+    |
+    | By default, only these are allowed: `a-z 0-9~%.:_-`
+    |
+    | Set an empty string to allow all characters -- but only if you are insane.
+    |
+    | The configured value is actually a regular expression character group
+    | and it will be used as: '/\A[<permittedURIChars>]+\z/iu'
+    |
+    | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
+    |
+    */
+    public string $permittedURIChars = 'a-z 0-9~%.:_\-';
 }

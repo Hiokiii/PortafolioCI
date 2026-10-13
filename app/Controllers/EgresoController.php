@@ -48,7 +48,7 @@ class EgresoController extends BaseController
 
         $data['jugadorGeneros'] = $jugadorGeneros;
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             if ($validation->withRequest($this->request)->run()) {
                 $postData = $this->request->getPost();
                 $postData['concepto'] = 'sueldo_jugadores';
@@ -90,7 +90,7 @@ class EgresoController extends BaseController
 
         $data['tecnicos'] = $tecnicos;
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
 
                 $postData = $this->request->getPost();
                 $postData['concepto'] = 'sueldo_e_tecnico';
@@ -123,7 +123,7 @@ class EgresoController extends BaseController
 
     $data['dirigentes'] = $dirigentes;
 
-    if ($this->request->getMethod() === 'post') {
+    if ($this->request->getMethod() === 'POST') {
 
             $postData = $this->request->getPost();
             $postData['concepto'] = 'sueldo_dirigentes';
@@ -163,7 +163,7 @@ class EgresoController extends BaseController
         'pagoRealizado' => $pagoRealizado != null
     ];
 
-    if ($this->request->getMethod() === 'post') {
+    if ($this->request->getMethod() === 'POST') {
         if ($pagoRealizado == null) {
             $postData = $this->request->getPost();
             $postData['concepto'] = 'pago_mensualidad';

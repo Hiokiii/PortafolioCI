@@ -4,7 +4,6 @@ namespace Config;
 
 use CodeIgniter\Config\View as BaseView;
 use CodeIgniter\View\ViewDecoratorInterface;
-
 class View extends BaseView
 {
     /**
@@ -18,7 +17,6 @@ class View extends BaseView
      * @var bool
      */
     public $saveData = true;
-
     /**
      * Parser Filters map a filter name with any PHP callable. When the
      * Parser prepares a variable for display, it will chain it
@@ -33,7 +31,6 @@ class View extends BaseView
      * @var array
      */
     public $filters = [];
-
     /**
      * Parser Plugins provide a way to extend the functionality provided
      * by the core Parser by creating aliases that will be replaced with
@@ -42,7 +39,6 @@ class View extends BaseView
      * @var array
      */
     public $plugins = [];
-
     /**
      * View Decorators are class methods that will be run in sequence to
      * have a chance to alter the generated output just prior to caching
@@ -53,4 +49,27 @@ class View extends BaseView
      * @var class-string<ViewDecoratorInterface>[]
      */
     public array $decorators = [];
+    /**
+     * When true, Parser conditionals may only contain variables, literals,
+     * arithmetic, comparison and logical operators, and parentheses. Enable
+     * this when less-trusted users can edit Parser templates. Can be overridden per
+     * call with the `restrictConditionals` render option.
+     */
+    public bool $restrictParserConditionals = false;
+    /**
+     * Subdirectory within app/Views for namespaced view overrides.
+     *
+     * Namespaced views will be searched in:
+     *
+     *   app/Views/{$appOverridesFolder}/{Namespace}/{view_path}.{php|html...}
+     *
+     * This allows application-level overrides for package or module views
+     * without modifying vendor source files.
+     *
+     * Examples:
+     *   'overrides' -> app/Views/overrides/Example/Blog/post/card.php
+     *   'vendor'    -> app/Views/vendor/Example/Blog/post/card.php
+     *   ''          -> app/Views/Example/Blog/post/card.php (direct mapping)
+     */
+    public string $appOverridesFolder = 'overrides';
 }

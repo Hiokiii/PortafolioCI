@@ -53,7 +53,7 @@ class VentaJugadorController extends BaseController
         $data['jugadorGeneros'] = $jugadorGeneros;
         $data['equipos'] = $equipos;
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
             $postData['concepto'] = 'venta_jugadores';
             $postData['monto'];

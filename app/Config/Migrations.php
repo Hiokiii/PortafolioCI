@@ -3,7 +3,6 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
-
 class Migrations extends BaseConfig
 {
     /**
@@ -17,7 +16,6 @@ class Migrations extends BaseConfig
      * and disable it back when you're done.
      */
     public bool $enabled = true;
-
     /**
      * --------------------------------------------------------------------------
      * Migrations Table
@@ -30,7 +28,6 @@ class Migrations extends BaseConfig
      * will migrate up. This must be set.
      */
     public string $table = 'migrations';
-
     /**
      * --------------------------------------------------------------------------
      * Timestamp Format
@@ -49,4 +46,18 @@ class Migrations extends BaseConfig
      * - Y_m_d_His_
      */
     public string $timestampFormat = 'Y-m-d-His_';
+    /**
+     * --------------------------------------------------------------------------
+     * Enable/Disable Migration Lock
+     * --------------------------------------------------------------------------
+     *
+     * Locking is disabled by default.
+     *
+     * When enabled, it will prevent multiple migration processes
+     * from running at the same time by using a lock mechanism.
+     *
+     * This is useful in production environments to avoid conflicts
+     * or race conditions during concurrent deployments.
+     */
+    public bool $lock = false;
 }

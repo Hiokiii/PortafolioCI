@@ -21,7 +21,7 @@ class JugadorController extends BaseController
 
         //Agrega Ultimos Partidos
         $partidosModel = new PartidosModel();
-        $partidos = $partidosModel->findAll();
+        $partidos = $partidosModel->obtenerHistorial();
 
         // Pasar los datos a la vista
         $data['partidos'] = $partidos;
@@ -332,7 +332,7 @@ class JugadorController extends BaseController
     {
         $usuarioModel = new UsuarioModel();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
 
         // Obtén la contraseña en claro
         $clavebuena = $request->getPost('password_hash');

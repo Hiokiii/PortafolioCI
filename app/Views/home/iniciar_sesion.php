@@ -1,13 +1,10 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-  <title>Login Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión · Los Alces | Demo</title>
   <!--Made with love by Mutiullah Samim -->
 
   <!--Bootsrap 4 CDN-->
@@ -19,7 +16,6 @@
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
   <!--Custom styles-->
-  <link rel="stylesheet" type="text/css" href="styles.css">
 
   <style>
     html,
@@ -33,16 +29,18 @@
 
 
     .container {
-      height: 100%;
+      min-height: 100vh;
+      padding: 24px 15px;
       align-content: center;
     }
 
     .card {
-      height: 370px;
+      height: auto;
       margin-top: auto;
       margin-bottom: auto;
-      width: 400px;
-      background-color: rgba(0, 0, 0, 0.5) !important;
+      width: 480px;
+      max-width: 100%;
+      background-color: rgba(10, 20, 15, 0.94) !important;
     }
 
     .social_icon span {
@@ -121,6 +119,27 @@
     .links a {
       margin-left: 4px;
     }
+    .card-header h1 { color: white; font-size: 1.7rem; margin: 16px 0 6px; }
+    .card-header p { color: #d4ded7; margin: 0; }
+    .home-link { color: #ffc312; font-size: .9rem; }
+    .demo-heading { color: #fff; font-size: 1.15rem; margin-bottom: 8px; }
+    .demo-intro, .demo-status { color: #d4ded7; font-size: .9rem; }
+    .demo-password { color: #fff; margin: 12px 0 16px; }
+    .demo-password code { color: #ffc312; font-size: 1rem; overflow-wrap: anywhere; }
+    .demo-accounts { display: grid; gap: 8px; margin-bottom: 18px; }
+    .demo-account {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px;
+      width: 100%; padding: 10px 12px; border: 1px solid #66766c;
+      border-radius: 6px; background: #1d3024; color: #fff; text-align: left;
+      cursor: pointer; font-size: .95rem;
+    }
+    .demo-account:hover { background: #2b4533; border-color: #ffc312; }
+    .demo-account small { color: #d4ded7; overflow-wrap: anywhere; }
+    .demo-account[aria-pressed="true"] { border-color: #ffc312; background: #35432a; }
+    :focus-visible { outline: 3px solid #ffc312 !important; outline-offset: 3px; }
+    .demo-status { min-height: 1.4em; margin: 0; }
+    .login_btn { float: none !important; width: 100%; margin-top: 4px; }
+    .card-footer { padding-top: 20px; }
   </style>
 </head>
 
@@ -129,35 +148,26 @@
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
-          <h3></h3>
-          <div class="d-flex justify-content-end social_icon">
-            <span><i class="fab fa-facebook-square"></i></span>
-            <span><i class="fab fa-google-plus-square"></i></span>
-            <span><i class="fab fa-twitter-square"></i></span>
-          </div>
-          <div class="d-flex justify-content-start back_button">
-            <a  href=<?php echo base_url('Home'); ?> class="btn btn-link text-left">
-              <span><i class="fas fa-arrow-left"></i></span>
-            </a>
-          </div>
+          <a href="<?= esc(base_url('Home'), 'attr') ?>" class="home-link">← Volver al inicio</a>
+          <h1>Iniciar sesión</h1>
+          <p>Club de fútbol Los Alces · Demo interactiva</p>
         </div>
         <div class="card-body">
-          <form action="<?php echo base_url(); ?>Home/validarIngreso" method="post">
+          <form action="<?= esc(base_url('Home/validarIngreso'), 'attr') ?>" method="post">
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-user"></i></span>
               </div>
-              <input type="text" name="email" id="email" class="form-control" placeholder="Correo Electronico" required="Email">
+              <label for="email" class="sr-only">Correo electrónico</label>
+              <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" autocomplete="username" required>
 
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-key"></i></span>
               </div>
-              <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
-            </div>
-            <div class="row align-items-center remember">
-              <input type="checkbox">Recuerdame
+              <label for="password" class="sr-only">Contraseña</label>
+              <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" autocomplete="current-password" required>
             </div>
             <div class="form-group">
               <input type="submit" value="Iniciar Sesión" class="btn float-right login_btn">
@@ -169,8 +179,8 @@
               <?php
               if (isset($mensaje)) {
               ?>
-                <div class="alert alert-<?= $tipo; ?>">
-                  <?= $mensaje; ?>
+                <div class="alert alert-danger" role="alert">
+                  <?= esc($mensaje); ?>
                 </div>
 
               <?php } ?>
@@ -178,16 +188,45 @@
           </div>
         </div>
         <div class="card-footer">
+          <section aria-labelledby="demo-heading">
+            <h2 id="demo-heading" class="demo-heading">Explora con una cuenta de demo</h2>
+            <p class="demo-intro">Selecciona un perfil para completar el formulario. Las cuentas usan datos ficticios.</p>
+            <p class="demo-password">Contraseña para todos: <code>DemoAlces2026!</code></p>
+            <div class="demo-accounts">
+              <?php foreach ([
+                  'Administrador' => 'admin@example.com',
+                  'Socio' => 'socio@example.com',
+                  'Dirección' => 'direccion@example.com',
+                  'Jugador' => 'jugador@example.com',
+                  'Equipo técnico' => 'tecnico@example.com',
+              ] as $role => $email): ?>
+                <button type="button" class="demo-account" data-demo-email="<?= esc($email, 'attr') ?>" aria-pressed="false">
+                  <strong><?= esc($role) ?></strong><small><?= esc($email) ?></small>
+                </button>
+              <?php endforeach; ?>
+            </div>
+            <p id="demo-status" class="demo-status" role="status" aria-live="polite"></p>
+          </section>
           <div class="d-flex justify-content-center links">
-            ¿Eres nuevo?<a href=<?php echo base_url('Registrarse'); ?>>Registrate</a>
-          </div>
-          <div class="d-flex justify-content-center">
-            <a href="#">. </a>
+            ¿Eres nuevo?<a href="<?= esc(base_url('Registrarse'), 'attr') ?>">Regístrate</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script>
+    document.querySelectorAll('[data-demo-email]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        document.getElementById('email').value = button.dataset.demoEmail;
+        document.getElementById('password').value = 'DemoAlces2026!';
+        document.querySelectorAll('[data-demo-email]').forEach(function (option) {
+          option.setAttribute('aria-pressed', String(option === button));
+        });
+        document.getElementById('demo-status').textContent = 'Perfil ' + button.querySelector('strong').textContent + ' seleccionado. Pulsa Iniciar Sesión.';
+        document.querySelector('[type="submit"]').focus();
+      });
+    });
+  </script>
 </body>
 
 </html>

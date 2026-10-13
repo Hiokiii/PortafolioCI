@@ -22,7 +22,7 @@ class CompraJugadorController extends BaseController
 
         $data['equiposDestino'] = $equiposDestino;
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
 
             // Equipos origen
@@ -67,7 +67,7 @@ class CompraJugadorController extends BaseController
         $jugador = new JugadorModel();
         $db = \Config\Database::connect();
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
 
             // Obtener los valores de la sesión
@@ -109,9 +109,9 @@ class CompraJugadorController extends BaseController
         $user = new UsuarioModel();
         $db = \Config\Database::connect();
         $request = \Config\Services::request();
-        $encrypter = \config\Services::encrypter();
+        $encrypter = \Config\Services::encrypter();
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $postData = $this->request->getPost();
 
             // Obtener los valores de la sesión
