@@ -5,9 +5,12 @@
 
 START TRANSACTION;
 
+-- Reutiliza una cancha presente en la base importada (el ID puede variar).
+SET @cancha_demo = (SELECT MIN(`id`) FROM `cancha`);
+
 -- Femenino: Los Alces FC F vs Irreal Madrid, 2-1.
 INSERT INTO `partidos` (`equipo_local_fk`, `equipo_visita_fk`, `ubicacion_fk`, `fecha`, `campeonato_id_fk`)
-SELECT 10, 11, 1, '2026-10-04 15:00:00', 1
+SELECT 10, 11, @cancha_demo, '2026-10-04 15:00:00', 1
 WHERE NOT EXISTS (
     SELECT 1 FROM `partidos`
     WHERE `equipo_local_fk` = 10 AND `equipo_visita_fk` = 11
@@ -37,7 +40,7 @@ WHERE @partido_demo_f1 IS NOT NULL
 
 -- Masculino: Los Alces FC M vs Rusia Dortmund, 3-2.
 INSERT INTO `partidos` (`equipo_local_fk`, `equipo_visita_fk`, `ubicacion_fk`, `fecha`, `campeonato_id_fk`)
-SELECT 14, 15, 2, '2026-10-11 15:00:00', 2
+SELECT 14, 15, @cancha_demo, '2026-10-11 15:00:00', 2
 WHERE NOT EXISTS (
     SELECT 1 FROM `partidos`
     WHERE `equipo_local_fk` = 14 AND `equipo_visita_fk` = 15
@@ -75,7 +78,7 @@ WHERE @partido_demo_m1 IS NOT NULL
 
 -- Femenino: Los Alces FC F vs Guachipato, 1-1.
 INSERT INTO `partidos` (`equipo_local_fk`, `equipo_visita_fk`, `ubicacion_fk`, `fecha`, `campeonato_id_fk`)
-SELECT 10, 12, 1, '2026-10-18 12:00:00', 1
+SELECT 10, 12, @cancha_demo, '2026-10-18 12:00:00', 1
 WHERE NOT EXISTS (
     SELECT 1 FROM `partidos`
     WHERE `equipo_local_fk` = 10 AND `equipo_visita_fk` = 12
@@ -87,7 +90,7 @@ SET @partido_demo_f2 = (
       AND `fecha` = '2026-10-18 12:00:00' AND `campeonato_id_fk` = 1 LIMIT 1
 );
 INSERT INTO `resultados` (`equipo_local_fk`, `equipo_visita_fk`, `goles_local`, `goles_visita`, `id_partido_fk`, `campeonato_id_fk`)
-SELECT 10, 12, 1, 1, @partido_demo_f2, 1
+SELECT 10, 12, @cancha_demo, 1, @partido_demo_f2, 1
 WHERE @partido_demo_f2 IS NOT NULL
   AND NOT EXISTS (SELECT 1 FROM `resultados` WHERE `id_partido_fk` = @partido_demo_f2);
 INSERT INTO `goles` (`partido_id_fk`, `jugador_id_fk`, `minuto`, `jugador_visita`)
@@ -101,7 +104,7 @@ WHERE @partido_demo_f2 IS NOT NULL
 
 -- Masculino: Los Alces FC M vs Ohiggins Norte, 0-2.
 INSERT INTO `partidos` (`equipo_local_fk`, `equipo_visita_fk`, `ubicacion_fk`, `fecha`, `campeonato_id_fk`)
-SELECT 14, 16, 2, '2026-10-25 15:30:00', 2
+SELECT 14, 16, @cancha_demo, '2026-10-25 15:30:00', 2
 WHERE NOT EXISTS (
     SELECT 1 FROM `partidos`
     WHERE `equipo_local_fk` = 14 AND `equipo_visita_fk` = 16
@@ -127,14 +130,14 @@ WHERE @partido_demo_m2 IS NOT NULL
 
 -- Próximos encuentros: se muestran en las pantallas de calendario.
 INSERT INTO `partidos` (`equipo_local_fk`, `equipo_visita_fk`, `ubicacion_fk`, `fecha`, `campeonato_id_fk`)
-SELECT 10, 1, 1, '2026-11-01 15:00:00', 1
+SELECT 10, 1, @cancha_demo, '2026-11-01 15:00:00', 1
 WHERE NOT EXISTS (
     SELECT 1 FROM `partidos`
     WHERE `equipo_local_fk` = 10 AND `equipo_visita_fk` = 1
       AND `fecha` = '2026-11-01 15:00:00' AND `campeonato_id_fk` = 1
 );
 INSERT INTO `partidos` (`equipo_local_fk`, `equipo_visita_fk`, `ubicacion_fk`, `fecha`, `campeonato_id_fk`)
-SELECT 14, 18, 2, '2026-11-08 12:00:00', 2
+SELECT 14, 18, @cancha_demo, '2026-11-08 12:00:00', 2
 WHERE NOT EXISTS (
     SELECT 1 FROM `partidos`
     WHERE `equipo_local_fk` = 14 AND `equipo_visita_fk` = 18
