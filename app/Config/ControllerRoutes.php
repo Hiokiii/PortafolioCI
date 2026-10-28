@@ -77,6 +77,21 @@ $routes->match(['get', 'post'], 'SocioController/historialPagos', 'SocioControll
 $routes->match(['get', 'post'], 'SocioController/getReporteEstadisticasMovil', 'SocioController::getReporteEstadisticasMovil', ['filter' => 'SesionSocio']);
 $routes->match(['get', 'post'], 'SponsorController/registrar', 'SponsorController::registrar', ['filter' => 'SesionDirector']);
 $routes->match(['get', 'post'], 'VentaJugadorController/registrarVentaJugadores', 'VentaJugadorController::registrarVentaJugadores', ['filter' => 'SesionDirector']);
+// Public store, cart and ticket sales. Mutating endpoints are POST + CSRF only.
+$routes->get('TiendaOficial', 'VentaSouvenirsController::cargaArticulos');
+$routes->get('VentaSouvenirsController/cargaArticulos', 'VentaSouvenirsController::cargaArticulos');
+$routes->get('DetalleProducto/(:num)', 'VentaSouvenirsController::detalleProducto/$1');
+$routes->get('VentaSouvenirsController/detalleProducto/(:num)', 'VentaSouvenirsController::detalleProducto/$1');
+$routes->post('VentaSouvenirsController/agregarProducto', 'VentaSouvenirsController::agregarProducto', ['filter' => 'csrf']);
+$routes->get('CarroCompras', 'VentaSouvenirsController::mostrarCarro');
+$routes->post('VentaSouvenirsController/eliminarProducto', 'VentaSouvenirsController::eliminarProducto', ['filter' => 'csrf']);
+$routes->post('VentaSouvenirsController/vaciarCarro', 'VentaSouvenirsController::vaciarCarro', ['filter' => 'csrf']);
+$routes->get('Checkout', 'VentaSouvenirsController::checkout');
+$routes->post('VentaSouvenirsController/confirmarCompra', 'VentaSouvenirsController::confirmarCompra', ['filter' => 'csrf']);
+$routes->get('VentaEntradas', 'VentaSouvenirsController::loadVentaEntradas');
+$routes->get('DatosComprador/(:num)', 'VentaSouvenirsController::datosComprador/$1');
+$routes->get('VentaSouvenirsController/datosComprador/(:num)', 'VentaSouvenirsController::datosComprador/$1');
+$routes->post('VentaSouvenirsController/confirmarCompraEntrada', 'VentaSouvenirsController::confirmarCompraEntrada', ['filter' => 'csrf']);
 $routes->get('Home/index', 'Home::index');
 $routes->get('Home/homesocios', 'Home::homesocios');
 $routes->match(['get', 'post'], 'Home/register', 'Home::register');

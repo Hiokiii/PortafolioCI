@@ -178,7 +178,7 @@
     <!-- Cerrar Sesion -->
     <script type="text/javascript">
         function cerrarSesion() {
-            window.location.href = "<?php echo base_url('Home/cerrarSesion'); ?>";
+            window.location.href = "<?php echo base_url('logout'); ?>";
         }
     </script>
 </body>

@@ -1,0 +1,4 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Boleta de entrada</title><style>body{font-family:Arial,sans-serif;text-align:center}.container{width:400px;margin:0 auto;padding:20px;border:1px solid #ccc}.team-name{font-weight:bold;font-size:18px}</style></head><body><div class="container">
+<h1>Boleta de compra</h1><p>ID venta: <?= (int) $id_venta ?></p><p>Nombre: <?= esc($nombre_comprador) ?></p><p>RUT: <?= esc($rut_comprador) ?></p>
+<p class="team-name"><?= esc($nombre_equipo_local) ?> vs <?= esc($nombre_equipo_visita) ?></p><p><?= esc($campeonato) ?></p><p><?= esc($nombre_cancha) ?></p><p>Comprobante válido como entrada</p><p>Total: $<?= number_format((float) $monto, 0, ',', '.') ?></p>
+</div></body></html>

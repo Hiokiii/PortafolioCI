@@ -70,3 +70,7 @@ di.servietti@duocuc.cl
 ricardogarrido398@gmail.com
 dieg.barros@duocuc.cl
 
+
+## Módulo de compras
+
+El módulo público de tienda y venta de entradas usa las tablas `souvenirs`, `venta_souvenirs` y `venta_entradas`. En desarrollo, aplica la migración con `php spark migrate` y luego importa `app/Database/Queries/compras.sql` para cargar el catálogo demo. En InfinityFree/phpMyAdmin, importa ese mismo SQL después del dump principal; crea las tablas que falten, amplía `ingresos.concepto` y carga productos e imágenes del catálogo, sin copiar ventas ni datos personales.

@@ -63,6 +63,9 @@
                         <a class="nav-link" href="<?php echo base_url('ActividadesEspeciales'); ?>">Actividades especiales</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('TiendaOficial') ?>">Tienda</a>
+                    </li>
+                    <li class="nav-item">
                         <img src="<?= base_url() ?>/public/images/losalces.png" class="navbar-logo" alt="Image description">
                     </li>
                     <li class="nav-item">
@@ -70,6 +73,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url('ProximoPartido'); ?>">Próximos partidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= site_url('VentaEntradas') ?>">Entradas</a>
                     </li>
                 </ul>
             </div>
